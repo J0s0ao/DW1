@@ -1,25 +1,59 @@
+
 <?php
+session_start();
+?>
 
-require_once 'Produto.php';
-require_once 'Pagavel.php';
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja PHP</title>
 
-$itens = [
-    new ProdutoFisico("Camiseta", 49.90, 0.5),
-    new ProdutoDigital("Ebook PHP", 39.90, "https://example.com/ebook"),
-    new ProdutoComDesconto("Mouse", 100.00, 0.3),
-    new Pix(),
-    new Cartao(),
-    new Dinheiro(),
-    new Boleto()
-];
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 30px;
+        }
 
-foreach ($itens as $item) {
-    if ($item instanceof Produto) {
-        echo $item->descricao() . "<br>";
-        echo "Frete: R$ " . number_format($item->frete(), 2, ',', '.') . "<br>";
-        echo "Total: R$ " . number_format($item->total(), 2, ',', '.') . "<br><br>";
-    } elseif ($item instanceof Pagavel) {
-        $item->pagar(100.00);
-        echo "<br>";
-    }
-}
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 15px;
+        }
+
+        a {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Loja PHP</h1>
+
+    <ul>
+        <li><a href="login.php">Entrar</a></li>
+        <li><a href="painel.php">Painel (restrito)</a></li>
+        <li><a href="carrinho.php">Carrinho</a></li>
+        <li><a href="produtos.php">Produtos</a></li>
+    </ul>
+
+</body>
+</html>
